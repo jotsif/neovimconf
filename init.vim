@@ -1,5 +1,12 @@
+set iskeyword+=_
 set termguicolors
+set ignorecase
 set number
+
+" TODO
+" 	- Automatically install coc-pyright
+" 	- Automatically install vim-plug
+" 	- Automatically install coc-json
 
 call plug#begin('~/.config/nvim/site/autoload/')
 	Plug 'kien/ctrlp.vim'
@@ -51,3 +58,16 @@ colorscheme nord
 let g:nnn#command = 'nnn -o'
 nnoremap <leader>n :NnnPicker %:p:h<CR>
 
+autocmd BufWrite *.py :call CocAction('format')
+nnoremap <leader>t :CocCommand pyright.fileTest<CR>
+
+" Fugitive
+nnoremap <leader>co :Git checkout 
+nnoremap <leader>pp :Git push origin 
+nnoremap <leader>ff :Git pull<CR>
+
+let g:coc_user_config = {}
+let g:coc_user_config['pyright.testing.provider'] = 'pytest'
+let g:coc_user_config['python.formatting.provider'] = 'black'
+let g:coc_user_config['python.linting.flake8Enabled'] = 'true'
+let g:coc_user_config['python.linting.mypyEnabled'] = 'true'
