@@ -2,6 +2,7 @@ set iskeyword+=_
 set termguicolors
 set ignorecase
 set number
+set clipboard=unnamed
 
 " TODO
 " 	- Automatically install coc-pyright
@@ -11,6 +12,7 @@ set number
 call plug#begin('~/.config/nvim/site/autoload/')
 	Plug 'kien/ctrlp.vim'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
 	" Comment/Uncomment tool
 	Plug 'scrooloose/nerdcommenter'
 	" Switch to the begining and the end of a block by pressing %
@@ -28,8 +30,7 @@ call plug#begin('~/.config/nvim/site/autoload/')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	" Git integration
 	Plug 'tpope/vim-fugitive'
-	" Auto-close braces and scopes
-	"	Plug 'jiangmiao/auto-pairs'
+	Plug 'tpope/vim-surround'
 call plug#end()
 " Code action on <leader>a
 vmap <leader>a <Plug>(coc-codeaction-selected)<CR>
@@ -55,11 +56,12 @@ let mapleader = ','
 colorscheme nord
 
 " NNN configurations
-let g:nnn#command = 'nnn -o'
+let g:nnn#command = 'nnn -eE'
 nnoremap <leader>n :NnnPicker %:p:h<CR>
 
 autocmd BufWrite *.py :call CocAction('format')
 nnoremap <leader>t :CocCommand pyright.fileTest<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " Fugitive
 nnoremap <leader>co :Git checkout 
@@ -71,3 +73,4 @@ let g:coc_user_config['pyright.testing.provider'] = 'pytest'
 let g:coc_user_config['python.formatting.provider'] = 'black'
 let g:coc_user_config['python.linting.flake8Enabled'] = 'true'
 let g:coc_user_config['python.linting.mypyEnabled'] = 'true'
+
