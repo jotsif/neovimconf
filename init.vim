@@ -41,14 +41,12 @@ vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 " Goto definition
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
 " Open definition in a split window
 nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-W>L
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-nmap <silent> [b :bNext<CR>
-nmap <silent> ]b :bnext<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 let mapleader = ','
@@ -74,3 +72,5 @@ let g:coc_user_config['python.formatting.provider'] = 'black'
 let g:coc_user_config['python.linting.flake8Enabled'] = 'true'
 let g:coc_user_config['python.linting.mypyEnabled'] = 'true'
 
+" map jj to ESC
+inoremap jj <ESC>
