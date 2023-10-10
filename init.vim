@@ -31,6 +31,7 @@ call plug#begin('~/.config/nvim/site/autoload/')
 	" Git integration
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
+	Plug 'github/copilot.vim'
 call plug#end()
 " Code action on <leader>a
 vmap <leader>a <Plug>(coc-codeaction-selected)<CR>
